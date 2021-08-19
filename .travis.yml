@@ -1,0 +1,17 @@
+git:
+  depth: 15
+language: python
+cache: pip
+python:
+  - "3.6"
+# Do not move from the root dir. requirements.txt is here
+addons:
+  chrome: stable
+  apt:
+    packages:
+      - xvfb
+before_install:
+  - wget https://chromedriver.storage.googleapis.com/2.35/chromedriver_linux64.zip
+  - sudo unzip chromedriver_linux64.zip -d /usr/bin
+script:
+  - pytest --cov=surebet surebet/tests
